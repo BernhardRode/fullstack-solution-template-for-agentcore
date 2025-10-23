@@ -1,0 +1,5 @@
+stack_name_base: "genaiid-agentcore-starter-pack"
+
+frontend:
+  domain_name: null  # Optional: Set to your custom domain
+  certificate_arn: null  # Optional: Set to your ACM certificate ARN

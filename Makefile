@@ -13,7 +13,11 @@ all: lint test
 # TODO
 
 # Run both linting and formatting in one command
-lint: ruff-lint format
+lint: ruff-lint format eslint
+
+# Run ESLint on frontend code
+eslint:
+	cd frontend && npx eslint src --ext js,jsx
 
 # Run linting checks and fix issues automatically
 ruff-lint:

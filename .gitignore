@@ -22,4 +22,5 @@ rvl_cdip_*
 notebooks/examples/data
 .idea/
 .dsr/
-*tmp-dev-assets*
+node_modules
+cdk.out
