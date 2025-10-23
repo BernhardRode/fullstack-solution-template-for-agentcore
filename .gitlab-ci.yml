@@ -7,3 +7,20 @@
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 include:
   - component: code.aws.dev/proserve/automated-security-helper/automated-security-helper/ash@~latest
+
+stages:
+  - developer_tests
+
+developer_tests:
+  stage: developer_tests
+  rules:
+    - when: always  # Run on all branches
+
+  before_script:
+      - python --version
+      - apt-get update -y
+      - apt-get install make -y
+      - pip install ruff
+
+  script:
+      - make lint-cicd
