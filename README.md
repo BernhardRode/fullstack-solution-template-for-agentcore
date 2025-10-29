@@ -24,7 +24,7 @@ GASP comes deployable out-of-the-box with a fully functioning application. This 
 
 ### Architecture
 
-![Architecture Diagram](docs/img/GASP-architecture-20251023.png)
+![Architecture Diagram](docs/img/GASP-architecture-20251029.png)
 The out-of-the-box architecture is shown above. 
 
 ### Tech stack
