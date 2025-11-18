@@ -19,7 +19,7 @@ RUN uv pip install --no-cache -e . --no-deps && \
     uv pip install --no-cache boto3>=1.34.0 requests>=2.31.0
 
 # Copy and install agent-specific requirements
-COPY patterns/strands-single-agent/requirements.txt requirements.txt
+COPY patterns/langgraph-single-agent/requirements.txt requirements.txt
 RUN uv pip install --no-cache -r requirements.txt && \
     uv pip install --no-cache aws-opentelemetry-distro==0.10.1
 
@@ -30,11 +30,11 @@ USER bedrock_agentcore
 EXPOSE 8080
 
 # Copy only the agent code
-COPY patterns/strands-single-agent/basic_agent.py .
+COPY patterns/langgraph-single-agent/langgraph_agent.py .
 
-# Healthcheck using curl (available in bookworm-slim)
+# Healthcheck using curl
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:8080/ping || exit 1
 
 # Start agent with OpenTelemetry instrumentation
-CMD ["opentelemetry-instrument", "python", "-m", "basic_agent"]
+CMD ["opentelemetry-instrument", "python", "-m", "langgraph_agent"]
